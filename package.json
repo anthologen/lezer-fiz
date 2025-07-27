@@ -24,8 +24,8 @@
     "rollup": "^4.45.3"
   },
   "engines": {
-    "node": ">=20",
-    "pnpm": ">=9"
+    "node": ">=24",
+    "pnpm": ">=10"
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
