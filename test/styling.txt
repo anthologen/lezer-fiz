@@ -292,6 +292,81 @@ Recipe(
   )
 )
 
+# Global Style Binding with StyleTags
+
+*nodes{}
+*edges{
+  #x #y
+}
+
+==>
+
+Recipe(
+  GlobalStyleBinding(Identifier, StyleArgList())
+  GlobalStyleBinding(
+    Identifier,
+    StyleArgList(
+      StyleTag(QualifiableIdentifier(Identifier))
+      StyleTag(QualifiableIdentifier(Identifier)),
+    )
+  )
+)
+
+# Global Style Binding with Style Declarations
+
+*nodes{
+  color: #ff0000
+  font-size: 12px
+}
+
+==>
+
+Recipe(
+  GlobalStyleBinding(
+    Identifier,
+    StyleArgList(
+      StyleDeclaration(PropertyName, ColorLiteral),
+      StyleDeclaration(PropertyName, NumberLiteral(Unit))
+    )
+  )
+)
+
+# Global Style Binding with StringLiteral
+
+*nodes{
+  "description"
+}
+
+==>
+
+Recipe(
+  GlobalStyleBinding(
+    Identifier,
+    StyleArgList(StringLiteral)
+  )
+)
+
+# Global Style Binding Mixed Content
+
+*nodes{
+  #base
+  color: #abc
+  "note"
+}
+
+==>
+
+Recipe(
+  GlobalStyleBinding(
+    Identifier,
+    StyleArgList(
+      StyleTag(QualifiableIdentifier(Identifier)),
+      StyleDeclaration(PropertyName, ColorLiteral),
+      StringLiteral
+    )
+  )
+)
+
 # Description Shortcut
 
 #a{
